@@ -2,8 +2,8 @@ language: node_js
 node_js:
  — “7”
 branches:
-  only:
-    - firebase-deploy
+ only:
+  - firebase-deploy
 script:
  — echo “Deploy!!”
 install:
