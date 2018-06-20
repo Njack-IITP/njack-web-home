@@ -71,7 +71,7 @@ function setTeam(){
         teamHTML += '<div class="row features">';
         childSnapshot.forEach(function(grandchildSnapshot) {
             var gchildData = grandchildSnapshot.val();
-            teamHTML += '<section class="col-4 col-12-narrower feature">\
+            teamHTML += '<section class="col-3 col-12-narrower feature">\
                 <div class="image-wrapper first">\
                     <a class="image featured"><img src="' + gchildData.img + '" alt="" /></a>\
                 </div> <h3>' + gchildData.name + '</h3>';
@@ -80,12 +80,12 @@ function setTeam(){
                     
                 teamHTML += '<span>';
                 if(gchildData.web)
-                    teamHTML += '<a href="' + gchildData.web + '"> <i class="fa social fa-external-link" aria-hidden="true"></i> </a>';
+                    teamHTML += '<a href="' + gchildData.web + '" target="_blank"> <i class="fa social fa-external-link" aria-hidden="true"></i> </a>';
                 if(gchildData.gh)
-                    teamHTML += '<a href="' + gchildData.gh + '"> <i class="fa social fa-github" aria-hidden="true"></i> </a>';
+                    teamHTML += '<a href="' + gchildData.gh + '" target="_blank"> <i class="fa social fa-github" aria-hidden="true"></i> </a>';
                              
                 if(gchildData.fb)
-                    teamHTML += '<a href="' + gchildData.fb + '"> <i class="fa social fa-facebook-official" aria-hidden="true"></i> </a>';
+                    teamHTML += '<a href="' + gchildData.fb + '" target="_blank"> <i class="fa social fa-facebook-official" aria-hidden="true"></i> </a>';
 
                 teamHTML += '</span>';
                 teamHTML += '</section>';

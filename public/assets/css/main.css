@@ -2079,17 +2079,18 @@ input, select, textarea {
 		}
 
 	#header-wrapper {
+		background-image: url(images/overlay.png), -webkit-linear-gradient(75deg, #47e8dca3 15%, #9da5f2c7 55%), url(/images/bg.png);
 		position: relative;
 		padding: 4em 0 2em 0;
-		background-image: url("images/header.svg");
+		/* background-image: url("images/header.svg");
 		background-image: url("images/overlay.png"), url("images/header.svg"), -moz-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
 		background-image: url("images/overlay.png"), url("images/header.svg"), -webkit-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
 		background-image: url("images/overlay.png"), url("images/header.svg"), -ms-linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
-		background-image: url("images/overlay.png"), url("images/header.svg"), linear-gradient(75deg, #FF7088 15%, #F2B69D 55%);
+		background-image: url("images/overlay.png"), url("images/header.svg"), linear-gradient(75deg, #FF7088 15%, #F2B69D 55%); */
 		background-color: #f08c89;
-		background-size: 100% 620%;
-		background-size: 128px 128px, 100% 620%, auto;
-		background-repeat: repeat, no-repeat, no-repeat;
+		background-size: cover;
+		/* background-size: 128px 128px, 100% 620%, auto; */
+		/* background-repeat: repeat, no-repeat, no-repeat; */
 	}
 
 	.homepage #header-wrapper {
