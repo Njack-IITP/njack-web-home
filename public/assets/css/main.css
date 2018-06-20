@@ -2099,7 +2099,7 @@ input, select, textarea {
 
 	#promo-wrapper {
 		position: relative;
-		/* background-image: url("images/overlay.png"), url("../../images/promo.jpg"); */
+		background-image: url("images/overlay.png"), url("/images/promo.jpg"); 
 		background-size: 192px 192px, cover;
 		background-position: top left, center center;
 		color: #fff;

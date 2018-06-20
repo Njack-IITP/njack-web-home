@@ -5,6 +5,19 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>	
+		<!-- <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script> -->
+		<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+		<!-- <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-messaging.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-functions.js"></script> -->
+		<style>
+			.partners{
+				
+				max-width: 300px;
+				/* max-height: 200px; */
+			}
+		</style>
 	</head>
 	<body class="right-sidebar is-preload">
 		<div id="page-wrapper">
@@ -83,21 +96,9 @@
 											<header>
 												<h3>Updates</h3>
 											</header>
-											<p>Some updates on what folks @ NJACK are up to. <br> //fetch from firebase</p>
-											<!-- <ul class="actions">
-												<li><a href="#" class="button">Magna amet nullam</a></li>
-											</ul> -->
+											<p>Some updates on what folks @ NJACK are up to.</p>
 										</section>
-										<section>
-											<a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
-											<header>
-												<h3>Title</h3>
-											</header>
-											<p>Content</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More Details</a></li>
-											</ul>
-										</section>
+										<img src="images/load.gif" id="loader" alt="">
 									</section>
 
 							</div>
@@ -144,7 +145,20 @@
 						</div>
 					</div>
 				</div>
-
+					<!-- Promo -->
+					<div id="promo-wrapper">
+							<section id="promo">
+								<h2>Our collaborations over the years...</h2>
+								<p>
+									<img src="images/githubw.png" class="partners" alt="">
+									<img src="images/dsc.png" class="partners"  alt="">
+									<img src="images/nic.png" class="partners" alt="">
+									<img src="images/fossasia.png" class="partners"  alt="">
+								</p>
+								<!-- <a href="#" class="button">e-mail</a> -->
+							</section>
+						</div>
+		
 			<!-- Footer -->
 				<div id="footer-wrapper">
 					<div id="footer" class="container">
@@ -179,11 +193,16 @@
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/firebase.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script>
+				$(document).ready(function(){
+					setUpdates();
+				});
+			</script>
 	</body>
 </html>

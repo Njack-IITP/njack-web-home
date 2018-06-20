@@ -1,0 +1,82 @@
+[debug] [2018-06-20T05:49:32.348Z] ----------------------------------------------------------------------
+[debug] [2018-06-20T05:49:32.355Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\t_biswt\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-06-20T05:49:32.355Z] CLI Version:   3.18.6
+[debug] [2018-06-20T05:49:32.355Z] Platform:      win32
+[debug] [2018-06-20T05:49:32.355Z] Node Version:  v8.11.3
+[debug] [2018-06-20T05:49:32.356Z] Time:          Wed Jun 20 2018 11:19:32 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T05:49:32.356Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-20T05:49:32.367Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-20T05:49:32.369Z] > authorizing via signed-in user
+[debug] [2018-06-20T05:49:32.371Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/njack-web  
+  
+ Wed Jun 20 2018 11:19:32 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T05:49:33.573Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T05:49:33.574Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/njack-web/tokens  
+  
+ Wed Jun 20 2018 11:19:33 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T05:49:34.604Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T05:49:34.604Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/njack-web  
+  
+ Wed Jun 20 2018 11:19:34 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T05:49:36.054Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\t_biswt\Documents\njack-web'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-06-20T05:49:37.068Z] Fetching environment
+[debug] [2018-06-20T05:49:37.072Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/492601859045:getServerAppConfig  
+  
+ Wed Jun 20 2018 11:19:37 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T05:49:37.072Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/492601859045/clients/_:getWebAppConfig  
+  
+ Wed Jun 20 2018 11:19:37 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T05:49:37.911Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T05:49:37.911Z] Starting @google-cloud/functions-emulator
+[debug] [2018-06-20T05:49:38.043Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-06-20T05:49:40.454Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
+[debug] [2018-06-20T06:10:17.836Z] ----------------------------------------------------------------------
+[debug] [2018-06-20T06:10:17.844Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\t_biswt\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-06-20T06:10:17.845Z] CLI Version:   3.18.6
+[debug] [2018-06-20T06:10:17.845Z] Platform:      win32
+[debug] [2018-06-20T06:10:17.845Z] Node Version:  v8.11.3
+[debug] [2018-06-20T06:10:17.846Z] Time:          Wed Jun 20 2018 11:40:17 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T06:10:17.846Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-20T06:10:17.861Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-20T06:10:17.863Z] > authorizing via signed-in user
+[debug] [2018-06-20T06:10:17.866Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/njack-web  
+  
+ Wed Jun 20 2018 11:40:17 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T06:10:19.107Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T06:10:19.108Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/njack-web/tokens  
+  
+ Wed Jun 20 2018 11:40:19 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T06:10:20.063Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T06:10:20.064Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/njack-web  
+  
+ Wed Jun 20 2018 11:40:20 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T06:10:21.502Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\t_biswt\Documents\njack-web'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-06-20T06:10:22.535Z] Fetching environment
+[debug] [2018-06-20T06:10:22.538Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/492601859045:getServerAppConfig  
+  
+ Wed Jun 20 2018 11:40:22 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T06:10:22.538Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/492601859045/clients/_:getWebAppConfig  
+  
+ Wed Jun 20 2018 11:40:22 GMT+0530 (India Standard Time)
+[debug] [2018-06-20T06:10:23.390Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T06:10:23.391Z] Starting @google-cloud/functions-emulator
+[debug] [2018-06-20T06:10:23.410Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-06-20T06:10:25.963Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
