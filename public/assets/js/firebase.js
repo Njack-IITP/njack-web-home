@@ -7,8 +7,12 @@ projectId: "njack-web",
 storageBucket: "njack-web.appspot.com",
 messagingSenderId: "492601859045"
 };
-firebase.initializeApp(config);
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
 var database = firebase.database();
+
+
 
  function setUpdates(){
     var sidebarHTML = ""
@@ -52,6 +56,83 @@ var database = firebase.database();
     });
     
 }
+
+function setTeam(){
+    var teamHTML = ""
+    cnt = 0;
+    firebase.database().ref('/entity/team').once('value').then(function(snapshot) {
+        console.log(snapshot.val());
+        snapshot.forEach(function(childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            teamHTML += '<header class="major">\
+            <h2>' + childKey + '</h2>\
+        </header>' ;
+        teamHTML += '<div class="row features">';
+        childSnapshot.forEach(function(grandchildSnapshot) {
+            var gchildData = grandchildSnapshot.val();
+            teamHTML += '<section class="col-4 col-12-narrower feature">\
+                <div class="image-wrapper first">\
+                    <a class="image featured"><img src="' + gchildData.img + '" alt="" /></a>\
+                </div> <h3>' + gchildData.name + '</h3>';
+                if(gchildData.desig)
+                    teamHTML += '<h4>' + gchildData.desig + '</h4>';
+                    
+                teamHTML += '<span>';
+                if(gchildData.web)
+                    teamHTML += '<a href="' + gchildData.web + '"> <i class="fa social fa-external-link" aria-hidden="true"></i> </a>';
+                if(gchildData.gh)
+                    teamHTML += '<a href="' + gchildData.gh + '"> <i class="fa social fa-github" aria-hidden="true"></i> </a>';
+                             
+                if(gchildData.fb)
+                    teamHTML += '<a href="' + gchildData.fb + '"> <i class="fa social fa-facebook-official" aria-hidden="true"></i> </a>';
+
+                teamHTML += '</span>';
+                teamHTML += '</section>';
+            
+        });
+        
+        teamHTML += '</div>';
+            
+            
+          });
+          $("#teamContainer #loader").fadeOut("slow",function(){
+              $("#teamContainer").append(teamHTML);
+        });
+        
+    });
+    
+}
+
+function setPartners(){
+    var partnersHTML = ""
+    cnt = 0;
+    firebase.database().ref('/entity/partners').once('value').then(function(snapshot) {
+        console.log(snapshot.val())
+        snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();
+            if(childData.hasOwnProperty('url'))
+                partnersHTML += '<a href = "' + childData.url + '">'
+            partnersHTML += '<img src="' + childData.img + '" class="partners" >';
+            if(childData.hasOwnProperty('url'))
+                partnersHTML += '</a>'
+            
+            
+          });
+          if (snapshot.length > 5){
+            partnersHTML +='<p>Limited to showing 5 latest updates.</p><br>';
+            partnersHTML +='<ul class="actions">\
+                    <li><a href="updates.html" class="button">Show more</a></li>\
+                    </ul>';
+          }
+          $("#collaborations #loader").fadeOut("slow",function(){
+              $("#collaborations").append(partnersHTML);
+        });
+        
+    });
+    
+}
+
 
 function setUpdatesAll(){
     var sidebarHTML = ""
