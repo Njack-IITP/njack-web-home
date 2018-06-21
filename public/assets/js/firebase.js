@@ -73,7 +73,7 @@ function setTeam(){
             var gchildData = grandchildSnapshot.val();
             teamHTML += '<section class="col-3 col-12-narrower feature">\
                 <div class="image-wrapper first">\
-                    <a class="image featured"><img src="' + gchildData.img + '" alt="" /></a>\
+                    <a class="image featured"><img src="' + gchildData.img + '" class="teamMPic" alt="" /></a>\
                 </div> <h3>' + gchildData.name + '</h3>';
                 if(gchildData.desig)
                     teamHTML += '<h4>' + gchildData.desig + '</h4>';
