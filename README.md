@@ -1,7 +1,7 @@
 # njack-web-home
 Website for the NJACK root domain.   
     
-![Travis CI](https://travis-ci.org/Njack-IITP/njack-web-home.svg?branch=firebase-deploy)
+![Travis CI](https://travis-ci.org/Njack-IITP/njack-web-home.svg?branch=firebase-deploy)  [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)  [![HitCount](http://hits.dwyl.io/Njack-IITP/njack-web-home.svg)](http://hits.dwyl.io/Njack-IITP/njack-web-home)
 # local installation    
  - git clone git clone git@github.com:Njack-IITP/njack-web-home.git  && cd njack-web-home
  - npm install -g firebase-tools (assumong you have node preinstalled)
