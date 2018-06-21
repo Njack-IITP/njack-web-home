@@ -1,16 +1,17 @@
 # njack-web-home
-Website for the NJACK root domain.
-
+Website for the NJACK root domain.   
+    
+![Travis CI](https://travis-ci.org/Njack-IITP/njack-web-home.svg?branch=firebase-deploy)
 # local installation    
-git clone git clone git@github.com:Njack-IITP/njack-web-home.git   && cd njack-web-home
-npm install -g firebase-tools (assumong you have node preinstalled)
-firebase login
-firebase init
-firebase serve
+ - git clone git clone git@github.com:Njack-IITP/njack-web-home.git  && cd njack-web-home
+ - npm install -g firebase-tools (assumong you have node preinstalled)
+ - firebase login
+ - firebase init
+ - firebase serve
 
 # deployment
-Firebase is set to autodeploy from Travis builds restricted to the "firebase-deploy" branch.   
-Write access to "firebase-deploy" branch is restricted to admins.
+Firebase is set to autodeploy from Travis builds restricted to the "firebase-deploy" branch.    
+"firebase-deploy" can not be pushed to. Commits must be made to "staging" or other branches and then open a PR/MR to "firebase-deploy" for shipping into production.
 
 # Firebase Realtime Database tree structure
  - Everything is an entity.
