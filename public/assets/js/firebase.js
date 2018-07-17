@@ -30,6 +30,34 @@ function fetchFromCache(entity) {
 function setUpdates() {
     var sidebarHTML = ""
     cnt = 0;
+    firebase.database().ref('/entity/events').once('value').then(function (esnapshot) {
+        console.log(esnapshot.val());
+        var echildKey = esnapshot.key;
+        var echildData = esnapshot.val();
+        var dt = new Date();
+        esnapshot.forEach(function (echildSnapshot) {
+            var egchildData = echildSnapshot.val();
+            console.log(egchildData);
+            if (egchildData.date.y == dt.getFullYear() && (egchildData.date.m - dt.getMonth() >=2 )){
+                sidebarHTML += '<section class= "eveUpdates">';
+                if (egchildData.hasOwnProperty('img'))
+                    sidebarHTML += '<a href="#" class="image featured"><img src="' + egchildData.img + '" alt="" /></a>';
+                sidebarHTML += '<header>\
+                    <h3>' + egchildData.name + '</h3>\
+                </header>\
+                <p>' + egchildData.desc + '</p>';
+                if (egchildData.hasOwnProperty('node'))
+                    sidebarHTML += '<ul class="actions">\
+                        <li><a href="/node/' + egchildData.node + '" class="button">More Details</a></li>\
+                        </ul>';
+                else if (egchildData.hasOwnProperty('url'))
+                    sidebarHTML += '<ul class="actions">\
+                        <li><a href="' + egchildData.url + '" class="button">More Details</a></li>\
+                        </ul>';
+                sidebarHTML += '</section>';
+            }
+        });
+   
     firebase.database().ref('/entity/updates').orderByChild('id').once('value').then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             cnt += 1;
@@ -41,7 +69,7 @@ function setUpdates() {
             console.log(childSnapshot);
             console.log(childData);
 
-            sidebarHTML += '<section>';
+            sidebarHTML += '<section class= "eveUpdates">';
             if (childData.hasOwnProperty('img'))
                 sidebarHTML += '<a href="#" class="image featured"><img src="' + childData.url + '" alt="" /></a>';
             sidebarHTML += '<header>\
@@ -62,12 +90,12 @@ function setUpdates() {
                     <li><a href="/updates" class="button">Show more</a></li>\
                     </ul>';
         }
-        $("#sidebar #loader").fadeOut("slow", function() {
-            $("#sidebar").append(sidebarHTML);
+        $("#updates #loader").fadeOut("slow", function() {
+            $("#updates").append(sidebarHTML);
         });
 
     });
-
+});
 }
 
 function setTeam() {
@@ -388,12 +416,6 @@ function setPartners() {
 
 
                 });
-                if (snapshot.length > 5) {
-                    partnersHTML += '<p>Limited to showing 5 latest updates.</p><br>';
-                    partnersHTML += '<ul class="actions">\
-                    <li><a href="/updates" class="button">Show more</a></li>\
-                    </ul>';
-                }
                 $("#collaborations #loader").fadeOut("slow", function() {
                     $("#collaborations").append(partnersHTML);
                 });
