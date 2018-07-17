@@ -164,6 +164,104 @@ function setTeam() {
         })
 }
 
+function fillEve(childData) {
+    var eveHTML = ""
+    console.log(childData)
+    Object.keys(childData).forEach(function (key, index) {
+        val = childData[key]
+        eveHTML += '<header class="major">\
+            <h2>' + key + '</h2>\
+            </header>';
+        eveHTML += '<div class="row features">';
+        val.forEach(function(cval){
+            console.log(eveHTML)
+            if (cval == null)
+                return true;
+            eveHTML += '<section class="col-3 col-12-narrower feature">\
+                <div class="image-wrapper first">\
+                    <a class="image featured"><img src="' + cval.img + '" class="teamMPic" alt="" /></a>\
+                </div> <h3>' + cval.name + '</h3>';
+            if (cval.desig)
+                eveHTML += '<h4>' + cval.desig + '</h4>';
+
+            eveHTML += '<span>';
+            if (cval.web)
+                eveHTML += '<a href="' + cval.web + '" target="_blank"> <i class="fa social fa-external-link" aria-hidden="true"></i> </a>';
+            if (cval.gh)
+                eveHTML += '<a href="' + cval.gh + '" target="_blank"> <i class="fa social fa-github" aria-hidden="true"></i> </a>';
+
+            if (cval.fb)
+                eveHTML += '<a href="' + cval.fb + '" target="_blank"> <i class="fa social fa-facebook-official" aria-hidden="true"></i> </a>';
+
+            eveHTML += '</span>';
+            eveHTML += '</section>';
+            console.log(eveHTML)
+        });
+        
+        eveHTML += '</div>';
+    });
+    
+    return eveHTML;
+    
+}
+function translateDate(dateObj){
+    mo = {
+        1: "January",
+        2: "Febbruary",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    }
+    return mo[dateObj.m] +" "+ dateObj.y.toString()
+}
+function setEvents() {
+    eveJson = []
+    cnt = 0;
+    $.getJSON("/cache/events.json", function (data) {
+        console.log("success");
+        cacheStor = data;
+        console.log(cacheStor);
+        $.each(cacheStor, function (childKey, childData) {
+            if (childData == null)
+                return true;
+
+        });
+        $("#eveContainer #loader").fadeOut("slow", function () {
+            $("#eveContainer").append(fillEve(eveJson));
+        });
+        return;
+    })
+        .fail(function () {
+
+            firebase.database().ref('/entity/events').once('value').then(function (snapshot) {
+                console.log(snapshot.val());
+                var childKey = snapshot.key;
+                var childData = snapshot.val();
+                snapshot.forEach(function (childSnapshot) {
+                        var gchild = childSnapshot.val();
+                    if (!eveJson.hasOwnProperty(translateDate(gchild.date)))
+                        eveJson[translateDate(gchild.date)] = []
+                    eveJson[translateDate(gchild.date)].push(gchild)
+                    });
+                    console.log(eveJson)
+                $("#eveContainer #loader").fadeOut("slow", function () {
+                    fillHtml = fillEve(eveJson);
+                    console.log(fillHtml)
+                    $("#eveContainer").append(fillHtml);
+                });
+
+            });
+            return false;
+        })
+}
+
 function setPartners() {
     var partnersHTML = ""
     cnt = 0;
