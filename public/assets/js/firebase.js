@@ -167,33 +167,35 @@ function setTeam() {
 function fillEve(childData) {
     var eveHTML = ""
     console.log(childData)
-    Object.keys(childData).forEach(function (key, index) {
+    var keysArr = Object.keys(childData);
+    keysArr.sort(function(a, b){return b - a});
+    keysArr.forEach(function (key, index) {
         val = childData[key]
         eveHTML += '<header class="major">\
-            <h2>' + key + '</h2>\
+            <h2> ' + translateDate(key,false) + ' </h2>\
             </header>';
         eveHTML += '<div class="row features">';
         val.forEach(function(cval){
             console.log(eveHTML)
             if (cval == null)
                 return true;
+            rimgarr = ['1.jpeg','2.png','3.jpg']
+            var rimg = (cval.img) ? cval.img : '/images/random/' + rimgarr[Math.floor(Math.random() * rimgarr.length)];
             eveHTML += '<section class="col-3 col-12-narrower feature">\
                 <div class="image-wrapper first">\
-                    <a class="image featured"><img src="' + cval.img + '" class="teamMPic" alt="" /></a>\
+                    <a class="image featured"><img src="' + rimg + '" class="evePic" alt="" /></a>\
                 </div> <h3>' + cval.name + '</h3>';
-            if (cval.desig)
-                eveHTML += '<h4>' + cval.desig + '</h4>';
-
-            eveHTML += '<span>';
-            if (cval.web)
-                eveHTML += '<a href="' + cval.web + '" target="_blank"> <i class="fa social fa-external-link" aria-hidden="true"></i> </a>';
-            if (cval.gh)
-                eveHTML += '<a href="' + cval.gh + '" target="_blank"> <i class="fa social fa-github" aria-hidden="true"></i> </a>';
-
-            if (cval.fb)
-                eveHTML += '<a href="' + cval.fb + '" target="_blank"> <i class="fa social fa-facebook-official" aria-hidden="true"></i> </a>';
-
-            eveHTML += '</span>';
+            if (cval.date)
+                eveHTML += '<h4> <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;&nbsp;' + dateTostr(cval.date.d, cval.date.m, cval.date.y) + '</h4>';
+            if (cval.where)
+                eveHTML += '<h4> <i class="fa fa-map-marker" style=""></i> &nbsp;&nbsp;' + cval.where + '</h4>';
+            
+            if (cval.desc)
+                eveHTML += '<h5> ' + cval.desc + '</h5>';
+            if (cval.node)
+                eveHTML += '<ul class="actions">\
+									<li><a href="/node/' + cval.node + '" class="button">More Info</a></li>\
+								</ul>';
             eveHTML += '</section>';
             console.log(eveHTML)
         });
@@ -204,7 +206,32 @@ function fillEve(childData) {
     return eveHTML;
     
 }
-function translateDate(dateObj){
+function dateTostr(d,m,y){
+    monthArr = {
+        1: "January",
+        2: "Febbruary",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    }
+    dstr =""
+    if (d != 0)
+        dstr+=d.toString() + " ";
+    if (m != 0)
+        dstr += monthArr[m] + " ";
+    if (y != 0)
+        dstr += y.toString();
+    return dstr;
+}
+
+function translateDate(dateObj,num){
     mo = {
         1: "January",
         2: "Febbruary",
@@ -219,7 +246,14 @@ function translateDate(dateObj){
         11: "November",
         12: "December"
     }
-    return mo[dateObj.m] +" "+ dateObj.y.toString()
+    if (num == false) {
+        m = dateObj%100;
+        y = Math.floor(dateObj / 100);
+        console.log(dateObj,y,m)
+        return mo[m] +" "+ y.toString()
+    } else {
+        return parseInt(dateObj.y*100 + dateObj.m)
+    }
 }
 function setEvents() {
     eveJson = []
@@ -231,7 +265,10 @@ function setEvents() {
         $.each(cacheStor, function (childKey, childData) {
             if (childData == null)
                 return true;
-
+            print(childKey, childData)
+            if (!eveJson.hasOwnProperty(translateDate(gchild.date)))
+                eveJson[translateDate(gchild.date)] = []
+            eveJson[translateDate(gchild.date)].push(gchild)
         });
         $("#eveContainer #loader").fadeOut("slow", function () {
             $("#eveContainer").append(fillEve(eveJson));
@@ -246,9 +283,9 @@ function setEvents() {
                 var childData = snapshot.val();
                 snapshot.forEach(function (childSnapshot) {
                         var gchild = childSnapshot.val();
-                    if (!eveJson.hasOwnProperty(translateDate(gchild.date)))
-                        eveJson[translateDate(gchild.date)] = []
-                    eveJson[translateDate(gchild.date)].push(gchild)
+                    if (!eveJson.hasOwnProperty(translateDate(gchild.date, true)))
+                        eveJson[translateDate(gchild.date, true)] = []
+                    eveJson[translateDate(gchild.date, true)].push(gchild)
                     });
                     console.log(eveJson)
                 $("#eveContainer #loader").fadeOut("slow", function () {
