@@ -59,7 +59,7 @@ function setUpdates() {
         if (snapshot.length > 5) {
             sidebarHTML += '<p>Limited to showing 5 latest updates.</p><br>';
             sidebarHTML += '<ul class="actions">\
-                    <li><a href="updates.html" class="button">Show more</a></li>\
+                    <li><a href="/updates" class="button">Show more</a></li>\
                     </ul>';
         }
         $("#sidebar #loader").fadeOut("slow", function() {
@@ -166,7 +166,6 @@ function setTeam() {
 
 function fillEve(childData) {
     var eveHTML = ""
-    console.log(childData)
     var keysArr = Object.keys(childData);
     keysArr.sort(function(a, b){return b - a});
     keysArr.forEach(function (key, index) {
@@ -176,7 +175,6 @@ function fillEve(childData) {
             </header>';
         eveHTML += '<div class="row features">';
         val.forEach(function(cval){
-            console.log(eveHTML)
             if (cval == null)
                 return true;
             rimgarr = ['1.jpeg','2.png','3.jpg']
@@ -197,7 +195,6 @@ function fillEve(childData) {
 									<li><a href="/node/' + cval.node + '" class="button">More Info</a></li>\
 								</ul>';
             eveHTML += '</section>';
-            console.log(eveHTML)
         });
         
         eveHTML += '</div>';
@@ -249,7 +246,6 @@ function translateDate(dateObj,num){
     if (num == false) {
         m = dateObj%100;
         y = Math.floor(dateObj / 100);
-        console.log(dateObj,y,m)
         return mo[m] +" "+ y.toString()
     } else {
         return parseInt(dateObj.y*100 + dateObj.m)
@@ -316,7 +312,7 @@ function setPartners() {
             if (data.length > 5) {
                 partnersHTML += '<p>Limited to showing 5 latest updates.</p><br>';
                 partnersHTML += '<ul class="actions">\
-                    <li><a href="updates.html" class="button">Show more</a></li>\
+                    <li><a href="/updates" class="button">Show more</a></li>\
                     </ul>';
             }
             $("#collaborations #loader").fadeOut("slow", function() {
@@ -340,7 +336,7 @@ function setPartners() {
                 if (snapshot.length > 5) {
                     partnersHTML += '<p>Limited to showing 5 latest updates.</p><br>';
                     partnersHTML += '<ul class="actions">\
-                    <li><a href="updates.html" class="button">Show more</a></li>\
+                    <li><a href="/updates" class="button">Show more</a></li>\
                     </ul>';
                 }
                 $("#collaborations #loader").fadeOut("slow", function() {
