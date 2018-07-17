@@ -50,7 +50,6 @@
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
-
 			<!-- Header -->
 				<div id="header-wrapper">
 					<div id="header" class="container">
@@ -79,21 +78,26 @@
 
 				</div>
 
+				<div class="container" id="main">
+					<div class="row gtr-150">
+						<div class="col-12 col-12-narrower">
+							<center><br><br>
+							<!-- Content -->
+								<img src="/images/load.gif" id="loader" alt="">	
+								<article id="content" style="display: none;">
+										<h2 style="font-size: 4em;text-align:center;" id="title"></h2>
+										<hr style="width: 60%">
+									
+									<header>
+										<br>
+										<p id="subtitle"></p>
+									</header>
+								</center>
+									<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+									
+								</article>
 
-
-			<!-- Features 2 -->
-				<div class="wrapper">
-					<section class="container">
-						<br>
-							<h2 style="font-size: 4em;text-align:center">The Team</h2>
-							<hr style="width:60%;">
-						<br>
-					</section>
-					<section class="container" id="teamContainer">
-						<img src="/images/load.gif" id="loader" alt="">	
-					</section>
-					
-				</div>
+						</div></div></div>
 
 		<!-- Footer -->
 		<div id="footer-wrapper">
@@ -132,7 +136,12 @@
 		<script src="/assets/js/main.js"></script>
 		<script>
 			$(document).ready(function(){
-				setTeam();
+				a = window.location.href.split('/');
+				if (a[a.length-1] == '')
+					setNode(a[a.length-2]);
+				else
+					setNode(a[a.length-1]);
+				
 			});
 		</script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->

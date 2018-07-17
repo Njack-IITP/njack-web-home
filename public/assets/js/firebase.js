@@ -251,6 +251,61 @@ function translateDate(dateObj,num){
         return parseInt(dateObj.y*100 + dateObj.m)
     }
 }
+
+function setNode(nodeID) {
+    eveJson = []
+    cnt = 0;
+    $.getJSON("/cache/node.json", function (data) {
+        console.log("success");
+        cacheStor = data;
+        console.log(cacheStor);
+        $("#title").html(cacheStor[nodeID].title);
+        $("#subtitle").html(cacheStor[nodeID].subtitle);
+        $.each(cacheStor[nodeID].body, function (childKey, childData) {
+            if (childData == null)
+                return true;
+            console.log(childData)
+            var keysArr = Object.keys(childData);
+            keysArr.sort(function(a, b){return b - a});
+            keysArr.forEach(function (key, index) {
+                if (key == 'img')
+                    $("#content").append(`<a href="#" class="image featured"><img src="${childData[key]}" alt=""/></a>`);
+                else
+                    $("#content").append(`<${key}>${childData[key]}</${key}>`);
+            });
+
+        });
+        $("#loader").fadeOut("slow", function () {
+            $("#content").fadeIn();
+        });
+        return;
+    }).fail(function () {
+            firebase.database().ref('/entity/node/'+nodeID).once('value').then(function (snapshot) {
+                console.log(snapshot.val());
+                var childKey = snapshot.key;
+                var childData = snapshot.val();
+                $("#title").html(childData.title);
+                $("#subtitle").html(childData.subtitle);
+                childData.body.forEach(function (childSnapshot) {    
+                        console.log(childSnapshot)
+                        var keysArr = Object.keys(childSnapshot);
+                        keysArr.sort(function(a, b){return b - a});
+                        keysArr.forEach(function (key, index) {
+                            if (key == 'img')
+                                $("#content").append(`<a href="#" class="image featured"><img src="${childSnapshot[key]}" alt=""/></a>`);
+                            else
+                                $("#content").append(`<${key}>${childSnapshot[key]}</${key}>`);
+                        });
+                    });
+                $("#loader").fadeOut("slow", function () {
+                    $("#content").fadeIn();
+                });
+
+            });
+            return false;
+        })
+}
+
 function setEvents() {
     eveJson = []
     cnt = 0;

@@ -28,4 +28,4 @@ if not os.path.isdir("public/cache"):
 constructEntityCache(db,"team")
 # constructEntityCache(db,"events")
 constructEntityCache(db,"partners")
-# constructEntityCache(db,"node")
+constructEntityCache(db,"node")
