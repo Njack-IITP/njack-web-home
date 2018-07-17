@@ -24,5 +24,6 @@ if not os.path.isdir("public/cache"):
         os.mkdir( "public/cache", 0755 )
 
 constructEntityCache(db,"team")
+constructEntityCache(db,"events")
 constructEntityCache(db,"partners")
 constructEntityCache(db,"node")

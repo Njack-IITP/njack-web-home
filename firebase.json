@@ -4,6 +4,19 @@
   },
   "hosting": {
     "public": "public",
+    "rewrites": [ {
+      "source": "/team",
+      "destination": "/team.html"
+    }, {
+      "source": "/events",
+      "destination": "/events.html"
+    }, {
+      "source": "/updates",
+      "destination": "/index.html"
+    }, {
+      "source": "/node/**",
+      "destination": "/node.html"
+    }  ],
     "ignore": [
       "firebase.json",
       "**/.*",

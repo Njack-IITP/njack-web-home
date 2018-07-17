@@ -59,7 +59,7 @@ function setUpdates() {
         if (snapshot.length > 5) {
             sidebarHTML += '<p>Limited to showing 5 latest updates.</p><br>';
             sidebarHTML += '<ul class="actions">\
-                    <li><a href="updates.html" class="button">Show more</a></li>\
+                    <li><a href="/updates" class="button">Show more</a></li>\
                     </ul>';
         }
         $("#sidebar #loader").fadeOut("slow", function() {
@@ -181,7 +181,7 @@ function setPartners() {
             if (data.length > 5) {
                 partnersHTML += '<p>Limited to showing 5 latest updates.</p><br>';
                 partnersHTML += '<ul class="actions">\
-                    <li><a href="updates.html" class="button">Show more</a></li>\
+                    <li><a href="/updates" class="button">Show more</a></li>\
                     </ul>';
             }
             $("#collaborations #loader").fadeOut("slow", function() {
@@ -205,7 +205,7 @@ function setPartners() {
                 if (snapshot.length > 5) {
                     partnersHTML += '<p>Limited to showing 5 latest updates.</p><br>';
                     partnersHTML += '<ul class="actions">\
-                    <li><a href="updates.html" class="button">Show more</a></li>\
+                    <li><a href="/updates" class="button">Show more</a></li>\
                     </ul>';
                 }
                 $("#collaborations #loader").fadeOut("slow", function() {
