@@ -6,9 +6,12 @@
         <script src="/assets/js/jquery.min.js"></script>
         <script>
             // Initialize Firebase
-            var loc = window.location.href.split('/')
-            if (loc == 'r' || loc == '' || !loc)
-                window.location = '/404.html'
+        var loc = window.location.href.split('/')
+        if (loc[loc.length-1] == 'r' || loc[loc.length-1] == '' || !loc[loc.length-1] )
+            window.location = '/404.html';
+        else if (loc[loc.length-1] == 'null')
+            window.location = '/404.html';
+        else{
             var config = {
                 apiKey: "AIzaSyBycKdfDXgvYk6TJUMKzOxefteWg1OKHYQ",
                 authDomain: "njack-web.firebaseapp.com",
@@ -22,18 +25,24 @@
             }
             $.getJSON("/cache/rewrite.json", function(data) {
             console.log("success");
-            window.location = data[loc[loc.length-1]];
+            if (data.hasOwnProperty(loc[loc.length-1]))
+                window.location = data[loc[loc.length-1]];
+            else
+                window.location = '/404.html';                
             console.log(cacheStor);
             return;
             }).fail(function() {
 
                 firebase.database().ref('/entity/rewrite/' + loc[loc.length-1]).once('value').then(function(snapshot) {
-                    console.log(snapshot.val());
+                    if (!snapshot.val()){
+                        window.location = '/404.html'
+                    }
                     window.location = snapshot.val()
                    
-                });
+                })
                 return false;
             })
+        }
         </script>
     </head>
     <body>
