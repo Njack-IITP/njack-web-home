@@ -16,6 +16,9 @@
     }, {
       "source": "/node/**",
       "destination": "/node.html"
+    }, {
+      "source": "/r/**",
+      "destination": "/rewrite.html"
     }  ],
     "ignore": [
       "firebase.json",
