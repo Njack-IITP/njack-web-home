@@ -287,6 +287,7 @@ function setNode(nodeID) {
         console.log("success");
         cacheStor = data;
         console.log(cacheStor);
+        document.title = cacheStor[nodeID].title + " | NJACK";
         $("#title").html(cacheStor[nodeID].title);
         $("#subtitle").html(cacheStor[nodeID].subtitle);
         $.each(cacheStor[nodeID].body, function (childKey, childData) {
@@ -312,6 +313,7 @@ function setNode(nodeID) {
                 console.log(snapshot.val());
                 var childKey = snapshot.key;
                 var childData = snapshot.val();
+                document.title = childData.title + " | NJACK";
                 $("#title").html(childData.title);
                 $("#subtitle").html(childData.subtitle);
                 childData.body.forEach(function (childSnapshot) {    
